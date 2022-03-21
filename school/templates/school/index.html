@@ -1,0 +1,46 @@
+{% include 'main.html' %}
+
+
+{% block content %}
+<ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Education Level</th>
+                <th scope="col">Address</th>
+                <th scope="col">Next of Kin</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        {% for student in students %}
+        <tr>
+            <td>{{student.fname }}</td>
+            <td>{{student.lname }}</td>
+            <td>{{student.email }}</td>
+            <td>{{student.dob }}</td>
+            <td>{{student.edu_level }}</td>
+            <td>{{student.home_address }}</td>
+            <td>{{student.next_of_kin }}</td>
+            <td><a type="button" class="btn btn-primary" href="{% url 'update-student' student.id %}">Edit</a></td>
+            <td><a type="button" class="btn btn-danger" href="{% url 'delete-student' student.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+
+        {% if messages %}
+            {% for message in messages%}
+                <h2 style="color:green; text-align:center;">{{message}}</h2>
+            {% endfor %}
+         
+        {% endif %}
+    </table>
+
+</ul>
+
+
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% include 'main.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="form-group" style="margin: auto;
+width: 60%; background-color: turquoise;
+padding: 10px">
+    <h1 style="text-align: center;">Student Registration</h1>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        {{form|crispy }}
+
+        <input type="submit" type="button" class="btn btn-light">
+ 
+    </form>
+</div>
+
+
+{% endblock content %}
